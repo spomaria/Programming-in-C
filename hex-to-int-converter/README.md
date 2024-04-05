@@ -1,68 +1,102 @@
-# C Program that Converts a Hexadecimal to Decimal
+# C Program that Changes the Case of an Alphabet
 
 ## Introduction
 In this course, I am learning the how to gain programming mastery in the Programming in C Course, as part of the C Programming for Everybody Specialization at [Coursera](https://www.coursera.org/) under the tutelage of [Charles Russel Severance](http://www.dr-chuck.com/)
 
-## Converting Hexadecimal to Decimal
-We shall write a C Program that converts a Hexadecimal number to decimal.
+## Changing to Lower Case
+We shall write a C Program that changes the case of an alphabet to lower case.
 
-On our local machine, we create a file and name it `hex_to_int_converter.c` using the following bash command
+On our local machine, we create a file and name it `to_lower.c` using the following bash command
 ```bash
-touch hex_to_int_converter.c
+touch to_lower.c
 ```
-Inside our `hex_to_int_converter.c` file, we write following codes
+Inside our `to_lower.c` file, we write following codes
 ```C
 #include <stdio.h>
-#include <string.h>
-
-int main(){
-    int htoi();
-    printf("htoi('9c53e') = %d\n", htoi("9c53e"));
-    printf("htoi('f') = %d\n", htoi("f"));
-    printf("htoi('F0') = %d\n", htoi("F0"));
-    printf("htoi('12fab') = %d\n", htoi("12fab"));
+int main() {
+  int lower();
+  printf("Lower M is %c\n", lower('M'));
+  printf("Lower x is %c\n", lower('x'));
+  printf("Lower @ is %c\n", lower('@'));
+  printf("Lower u is %c\n", lower('u'));
 }
 
-int htoi(s) /* convert s to integer */
-char s[];
+int lower(c) /* convert c to lower case; ASCII only */
+int c;
 {
-    int i, n;
-
-    n = 0;
-    for (
-        i = 0; i <= strlen(s) ; ++i
-    ){
-        /* i = 0; s[i] >= '0' && s[i] <= '9' || s[i] >= 'a' && s[i] <= 'f' ; ++i*/
-        if (s[i] >= '0' && s[i] <= '9') 
-            n = 16 * n + s[i] - '0';
-        else if(s[i] >= 'a' && s[i] <= 'f') 
-            n = 16 * n + s[i] - 87;
-        else if(s[i] >= 'A' && s[i] <= 'F') 
-            n = 16 * n + s[i] - 55;
-    }
-        
-    return(n);
+    /* Using the tenary operator*/
+    int z;
+    z = c >= 'A' && c <= 'Z' ? c + 'a' - 'A': c;
+    return(z);
 }
 ```
 
-In the above code snippet, there are two functions `main()` and `htoi(s)`. The `htoi(s)` function receives the string (hexadecimal) and converts it to a decimal. The `main()` function calls the `htoi(s)` function and executes it.
+In the above code snippet, there are two functions `main()` and `lower(c)`. The `lower(c)` function receives the character and converts it to lower case. The `main()` function calls the `lower(c)` function and executes it.
 
 To compile our script, we use the following bash command
 ```bash
-gcc -ansi hex_to_int_converter.c -o hex_to_int_converter
+gcc -ansi to_lower.c -o to_lower
 ```
-The above command will produce an executable file named `hex_to_int_converter` in the same directory as our `hex_to_int_converter.c` file upon successful compilation. In order to test the functionality of our C program, we run the following command
+The above command will produce an executable file named `to_lower` in the same directory as our `to_lower.c` file upon successful compilation. In order to test the functionality of our C program, we run the following command
 ```bash
-./hex_to_int_converter
+./to_lower
 ```
 
 The expected result is 
 ```
-htoi('9c53e') = 640318
-htoi('f') = 15
-htoi('F0') = 240
-htoi('12fab') = 77739
+Lower M is m
+Lower x is x
+Lower @ is @
+Lower u is u
 ```
+
+## Changing to Upper Case
+We shall write a C Program that changes the case of an alphabet to upper case.
+
+On our local machine, we create a file and name it `to_upper.c` using the following bash command
+```bash
+touch to_upper.c
+```
+Inside our `to_upper.c` file, we write following codes
+```C
+#include <stdio.h>
+int main() {
+  int upper();
+  printf("Upper M is %c\n", upper('M'));
+  printf("Upper x is %c\n", upper('x'));
+  printf("Upper @ is %c\n", upper('@'));
+  printf("Upper u is %c\n", upper('u'));
+}
+
+int upper(c) /* convert c to upper case; ASCII only */
+int c;
+{
+    /* Using the tenary operator*/
+    int z;
+    z = c >= 'a' && c <= 'z' ? c + 'A' - 'a': c;
+    return(z);
+}
+```
+
+In the above code snippet, there are two functions `main()` and `upper(c)`. The `upper(c)` function receives the character and converts it to upper case. The `main()` function calls the `upper(c)` function and executes it.
+
+To compile our script, we use the following bash command
+```bash
+gcc -ansi to_upper.c -o to_upper
+```
+The above command will produce an executable file named `to_upper` in the same directory as our `to_upper.c` file upon successful compilation. In order to test the functionality of our C program, we run the following command
+```bash
+./to_upper
+```
+
+The expected result is 
+```
+Upper M is M
+Upper x is X
+Upper @ is @
+Upper u is U
+```
+
 
 ## Authors
 Nengak Emmanuel Goltong 
